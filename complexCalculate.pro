@@ -10,7 +10,8 @@ SOURCES += \
     fraction-friends.cpp \
     memories.cpp \
     mixednumber.cpp \
-    mixednumber-friends.cpp
+    mixednumber-friends.cpp \
+    complexnumber-friends.cpp
 
 HEADERS += \
     complexnumber.h \
