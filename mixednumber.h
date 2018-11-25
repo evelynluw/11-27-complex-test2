@@ -3,6 +3,7 @@
 #include <iostream>
 #include <fstream>
 #include "fraction.h"
+#include <sstream>
 
 class mixedNumber : public fraction
 {
@@ -21,14 +22,12 @@ class mixedNumber : public fraction
         int getWhole() const;
         fraction getFrac() const;
         void setValues(int w, int n, int d);
-        void setWhole(int whole);
-        void setFrac(fraction frac);
 
         friend
         std::ostream& operator<<( std::ostream &out, const mixedNumber &m);
 
         friend
-        std::istream& operator>>( std::istream &in, mixedNumber &m);
+        std::istream& operator>>( std::istream &in, mixedNumber &m); //TESTED
 
     private:
 

@@ -14,13 +14,15 @@ std::ostream& operator<<( std::ostream &out, const mixedNumber &m)
 }
 
 std::istream& operator>>( std::istream &in, mixedNumber &m)
-{
-    char junk;
+{ //TESTED
     fraction part1;
-    if(in >> part1) {
-        if(in.peek()==' ') {
-
-        }
+    in>>part1;
+    if(in.peek()==' ') {
+        in>>m;
+        m += part1;
     }
-
+    else {
+        m = part1;
+    }
+    return in;
 }
