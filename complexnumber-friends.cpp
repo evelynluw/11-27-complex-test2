@@ -1,13 +1,60 @@
 #include "complexnumber.h"
-#include <complex>
+#include <string>
+#include <complex> //only for complex power (^) calculation
 
 std::ostream& operator << (std::ostream& out, const complexNumber& cplx) {
-    out<<cplx.getRealPart()<<'+'<<cplx.getImgPart()<<'i';
+    if(cplx.getRealPart() == 0 && cplx.getImgPart() == 0) {
+        out<<0;
+        return out;
+    }
+    if(cplx.getImgPart() == 0) {
+        out<<cplx.getRealPart();
+        return out;
+    }
+    if(cplx.getRealPart() == 0) {
+        out<<cplx.getImgPart()<<'i';
+        return out;
+    }
+//    char sign = (cplx.getImgPart()>=0) ? '+' : char(0);
+    if(cplx.getImgPart()>=0)
+        out<<cplx.getRealPart()<<'+'<<cplx.getImgPart()<<'i';
+    else
+        out<<cplx.getRealPart()<<cplx.getImgPart()<<'i';
     return out;
 }
 
 std::istream& operator >> (std::istream& in, complexNumber& cplx) {
+    mixedNumber x, y;
+    char junk, sign = '+';
+    if(in.peek() == 'i') {
+        in>>junk;
+        cplx.setValue(0,1);
+        return in;
+    }
 
+    in>>x;
+    while(in.peek()==' ')
+        in.get();
+    if(in.peek() == 'i') {
+        in>>junk;
+        cplx.setValue(0,x);
+        return in;
+    }
+
+    if(in.peek() == '-' || in.peek() == '+')
+        in>>sign;
+    else {
+        cplx.setValue(x,0);
+        return in;
+    }
+    while(in.peek()==' ')
+        in.get();
+    in>>y;
+    std::stringstream ss;
+    ss<<sign<<y;
+    ss>>y;
+    cplx.setValue(x,y);
+    return in;
 }
 
 complexNumber operator + (const complexNumber& x, const complexNumber& y) {
@@ -41,7 +88,12 @@ complexNumber operator / (const complexNumber& x, const complexNumber& y) { //TE
 }
 
 complexNumber operator ^ (const complexNumber& x, const complexNumber& y) {
-
+    // TESTED, need to set prescision
+    std::complex<double> _x(x.getRealPart().evaluate(),x.getImgPart().evaluate()),
+            _y(y.getRealPart().evaluate(), y.getImgPart().evaluate()),
+            _result;
+    _result = std::pow(_x, _y);
+    return complexNumber(_result.real(), _result.imag());
 }
 
 

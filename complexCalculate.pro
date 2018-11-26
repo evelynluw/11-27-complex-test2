@@ -18,3 +18,6 @@ HEADERS += \
     fraction.h \
     memories.h \
     mixednumber.h
+
+DISTFILES += \
+    notes.md

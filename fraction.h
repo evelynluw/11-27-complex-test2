@@ -111,7 +111,7 @@ class fraction
         void getInput();
         void reduce();
         fraction reduceFraction();
-        double evaluate();
+        double evaluate() const;
         double pow(fraction base, fraction power);
         bool isExactlyTheSame(fraction other);
 

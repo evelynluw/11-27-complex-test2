@@ -149,7 +149,7 @@ fraction fraction::reduceFraction() {
     return temp;
 }
 
-double fraction::evaluate() //TESTED
+double fraction::evaluate() const //TESTED
 {
      return num*1./denom;
 }

@@ -5,9 +5,8 @@ using namespace std;
 
 int main()
 {
-    complexNumber a(5,4),
-            b(3,-2),
-            c = a/b;
-    cout<<c<<endl;
+    complexNumber cplx1(5,4), cplx2(3,-2),
+            cplx3 = cplx1 ^ cplx2;
+    cout<<cplx1<<" ^ "<<cplx2<<" = "<<cplx3<<endl;
     return 0;
 }
