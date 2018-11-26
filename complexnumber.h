@@ -17,6 +17,7 @@ public:
     void getValue(mixedNumber& _real, mixedNumber& _img);
     mixedNumber getRealPart() const;
     mixedNumber getImgPart() const;
+    bool isReal() const;
 
     //mutators
     void setValue(mixedNumber _real, mixedNumber _img);
@@ -27,15 +28,17 @@ public:
     //operators
     complexNumber& operator = (const complexNumber &other);
 
-    complexNumber& operator += (const complexNumber &other);
-    complexNumber& operator -= (const complexNumber &other);
-    complexNumber& operator *= (const complexNumber &other);
-    complexNumber& operator /= (const complexNumber &other);
+    complexNumber& operator += (const complexNumber& other);
+    complexNumber& operator -= (const complexNumber& other);
+    complexNumber& operator *= (const complexNumber& other);
+    complexNumber& operator /= (const complexNumber& other);
+
+    complexNumber operator ~ () const;
 
     friend
     std::ostream& operator << (std::ostream& out, const complexNumber& cplx);
     friend
-    std::istream& operator >> (std::istream& in, mixedNumber& cplx);
+    std::istream& operator >> (std::istream& in, complexNumber& cplx);
     friend
     complexNumber operator + (const complexNumber& x, const complexNumber& y);
     friend
@@ -46,6 +49,8 @@ public:
     complexNumber operator / (const complexNumber& x, const complexNumber& y);
     friend
     complexNumber operator ^ (const complexNumber& x, const complexNumber& y);
+//    friend
+//    complexNumber operator ~ (const complexNumber& other);
 
     friend
     bool operator == (const complexNumber& x, const complexNumber& y);

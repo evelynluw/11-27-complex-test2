@@ -1,14 +1,13 @@
 #include <iostream>
-#include <mixednumber.h>
+#include "complexnumber.h"
 
 using namespace std;
 
 int main()
 {
-    mixedNumber mixed1;
-    while(1) {
-        cin>>mixed1;
-        cout<<mixed1<<endl;
-    }
+    complexNumber a(5,4),
+            b(3,-2),
+            c = a/b;
+    cout<<c<<endl;
     return 0;
 }

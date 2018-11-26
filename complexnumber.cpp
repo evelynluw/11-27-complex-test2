@@ -25,6 +25,10 @@ mixedNumber complexNumber::getImgPart() const {
     return img;
 }
 
+bool complexNumber::isReal() const {
+    return img == 0;
+}
+
 //mutators
 void complexNumber::setValue(mixedNumber _real, mixedNumber _img) {
     real = _real;
@@ -65,6 +69,11 @@ complexNumber& complexNumber::operator /= (const complexNumber &other) {
     *this = *this / other;
     return *this;
 }
+
+complexNumber complexNumber::operator ~ () const { //TESTED
+    return complexNumber(getRealPart(), 0 - getImgPart());
+}
+
 
 
 //PRIVATE

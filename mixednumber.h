@@ -13,6 +13,7 @@ class mixedNumber : public fraction
         mixedNumber(int w, int n, int d);
         mixedNumber(const mixedNumber &other);
         mixedNumber(const double &other);
+        mixedNumber(const fraction &other) : fraction(other) {}
         mixedNumber& operator=(const mixedNumber &other);
         mixedNumber& operator=(const fraction &other);
         mixedNumber& operator=(const int &other);
