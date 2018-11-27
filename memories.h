@@ -12,6 +12,7 @@ class memories
 public:
     memories();
     ~memories();
+    complexNumber& operator[] (const char index);
 private:
     map<char, complexNumber> cplxMap;
 };

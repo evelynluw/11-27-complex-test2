@@ -2,6 +2,7 @@
 #define COMPLEXNUMBER_H
 
 #include "mixednumber.h"
+#include <complex> //only for complex power (^) calculation
 
 class complexNumber
 {
@@ -12,6 +13,7 @@ public:
     ~complexNumber();
     complexNumber(mixedNumber _real, mixedNumber _img);
     complexNumber(const complexNumber &other);
+    complexNumber(const std::string str);
 
     //accessors
     void getValue(mixedNumber& _real, mixedNumber& _img);
@@ -19,9 +21,10 @@ public:
     mixedNumber getImgPart() const;
     bool isReal() const;
 
+
     //mutators
     void setValue(mixedNumber _real, mixedNumber _img);
-    void setValue(const complexNumber other);
+    void setValue(const complexNumber &other);
     void setRealPart(mixedNumber _real);
     void setImgPart(mixedNumber _img);
 

@@ -1,4 +1,5 @@
 #include "complexnumber.h"
+#include <sstream>
 
 complexNumber::complexNumber() {
     real = img = 0;
@@ -11,6 +12,12 @@ complexNumber::complexNumber(mixedNumber _real, mixedNumber _img) {
 }
 complexNumber::complexNumber(const complexNumber &other) {
     setValue(other);
+}
+
+complexNumber::complexNumber(const std::string str) {
+    std::stringstream ss;
+    ss<<str;
+    ss>>*this;
 }
 
 //accessors
@@ -35,7 +42,7 @@ void complexNumber::setValue(mixedNumber _real, mixedNumber _img) {
     img = _img;
 }
 
-void complexNumber::setValue(const complexNumber other) {
+void complexNumber::setValue(const complexNumber &other) {
     setValue(other.getRealPart(), other.getImgPart());
 }
 

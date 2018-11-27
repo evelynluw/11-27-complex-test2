@@ -11,3 +11,8 @@ memories::~memories() {
     for(char c = 'A'; c < 'Z'; c++)
         cplxMap[c] = zero;
 }
+
+complexNumber& memories::operator[] (const char index) {
+    return cplxMap[index];
+}
+

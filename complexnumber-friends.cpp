@@ -1,6 +1,5 @@
 #include "complexnumber.h"
 #include <string>
-#include <complex> //only for complex power (^) calculation
 
 std::ostream& operator << (std::ostream& out, const complexNumber& cplx) {
     if(cplx.getRealPart() == 0 && cplx.getImgPart() == 0) {
@@ -33,9 +32,9 @@ std::istream& operator >> (std::istream& in, complexNumber& cplx) {
     }
 
     in>>x;
-    while(in.peek()==' ')
-        in.get();
-    if(in.peek() == 'i') {
+//    while(in.peek()==' ')
+//        in.get();
+    if(toupper(in.peek()) == 'I') {
         in>>junk;
         cplx.setValue(0,x);
         return in;
@@ -47,8 +46,8 @@ std::istream& operator >> (std::istream& in, complexNumber& cplx) {
         cplx.setValue(x,0);
         return in;
     }
-    while(in.peek()==' ')
-        in.get();
+//    while(in.peek()==' ')
+//        in.get();
     in>>y;
     std::stringstream ss;
     ss<<sign<<y;

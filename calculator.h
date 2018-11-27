@@ -1,45 +1,33 @@
-#ifndef CALCULATOR_H
-#define CALCULATOR_H
-
 #include "memories.h"
 #include <string>
 
 using namespace std;
 
 
-class Calculator
-{
-typedef void (*fptr)(string arg);
+typedef void (*fptr)(string, memories&);
 
-public:
-    Calculator();
-    ~Calculator();
-    void run(int argc, char *argv[]);
-    void test();
-private:
-    memories mem;
-    map<string, fptr> funcMap;
+//memories &mem;
+//map<string, fptr> funcMap;
+void run(int argc, char *argv[]);
+void test();
 
-    void prompt();
-    void help();
-    string getCommand(istream& in);
-    void execCommand(string command);
-    void callFunction(string funcName);
-    void fillFunction();
-    void algebra(string algebraExp);
+void prompt();
+void help();
+string getCommand(istream& in);
 
-    void let(string arg);
-    void load(string arg);
-    void save(string arg);
-    void print(string arg);
-    void exit(string arg);
-    void wexit(string arg);
+void algebra(string algebraExp, memories &mem);
+string formatString(string unformatted);
+string toUpper(string str);
+void recordToFile(string filename, string line);
+void saveStringToFile(string filename, string line, bool append);
 
-    void execute(string arg);
-    void record(string arg);
+void let(string arg, memories &mem);
+void save(string arg, memories &mem);
+void print(string arg, memories &mem);
+void exit(string arg, memories &mem);
+void wexit(string arg, memories &mem);
+void trig(string arg, memories &mem);
 
+void execute(string arg, memories &mem);
+void record(string arg, memories &mem);
 
-
-};
-
-#endif // CALCULATOR_H
