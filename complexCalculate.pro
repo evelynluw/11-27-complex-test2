@@ -11,13 +11,15 @@ SOURCES += \
     memories.cpp \
     mixednumber.cpp \
     mixednumber-friends.cpp \
-    complexnumber-friends.cpp
+    complexnumber-friends.cpp \
+    calculator.cpp
 
 HEADERS += \
     complexnumber.h \
     fraction.h \
     memories.h \
-    mixednumber.h
+    mixednumber.h \
+    calculator.h
 
 DISTFILES += \
     notes.md

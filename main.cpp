@@ -5,8 +5,14 @@ using namespace std;
 
 int main()
 {
-    complexNumber cplx1(5,4), cplx2(3,-2),
+    complexNumber cplx1(-1,0), cplx2(0.5,0),
             cplx3 = cplx1 ^ cplx2;
-    cout<<cplx1<<" ^ "<<cplx2<<" = "<<cplx3<<endl;
+    while (1) {
+        cout<<cplx1<<" ^ "<<cplx2<<" = "<<(cplx1^cplx2)<<endl;
+        cout<<": ";
+        cin>>cplx1;
+        cout<<": ";
+        cin>>cplx2;
+    }
     return 0;
 }
