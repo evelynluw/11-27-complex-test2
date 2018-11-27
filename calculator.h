@@ -6,8 +6,11 @@
 
 using namespace std;
 
+
 class Calculator
 {
+typedef void (*fptr)(string arg);
+
 public:
     Calculator();
     ~Calculator();
@@ -15,7 +18,16 @@ public:
     void test();
 private:
     memories mem;
-//    map<string,
+    map<string, fptr> funcMap;
+
+    void prompt();
+    void help();
+    string getCommand(istream& in);
+    void execCommand(string command);
+    void callFunction(string funcName);
+    void fillFunction();
+    void algebra(string algebraExp);
+
     void let(string arg);
     void load(string arg);
     void save(string arg);
@@ -26,11 +38,7 @@ private:
     void execute(string arg);
     void record(string arg);
 
-    void prompt();
-    void help();
-    string getCommand(istream& in);
-    void execCommand(string command);
-    void algebra(string algebraExp);
+
 
 };
 

@@ -21,6 +21,56 @@ void Calculator::test() {
 
 //PRIVATE
 
+void Calculator::prompt() {
+
+}
+
+void Calculator::help() {
+
+}
+
+string Calculator::getCommand(istream& in) {
+    if(in.peek()=='\n')
+        exit(0);
+    string temp;
+    getline(in, temp);
+    return temp;
+}
+
+void Calculator::execCommand(string command) {
+    /* sample argm:
+     * LET F = 2 + 4i
+     * LOAD filename.complex
+     * SAVE filename.complex
+     * PRINT F
+     * EXIT
+     * WEXIT
+     */
+    stringstream ss;
+    fptr action;
+    ss<<command;
+//    ss>>action;
+
+}
+
+void Calculator::callFunction(string funcName) {
+
+}
+
+void Calculator::fillFunction() {
+    string test;
+    funcMap["LET"] = let;
+    funcMap["LOAD"] = load;
+}
+
+
+void Calculator::algebra(string algebraExp) {
+
+}
+
+
+//
+
 void Calculator::let(string arg) {
 
 }
@@ -45,6 +95,7 @@ void Calculator::wexit(string arg) {
 
 }
 
+//
 
 void Calculator::execute(string arg) {
 
@@ -54,24 +105,6 @@ void Calculator::record(string arg) {
 
 }
 
+//
 
-void Calculator::prompt() {
-
-}
-
-void Calculator::help() {
-
-}
-
-string Calculator::getCommand(istream& in) {
-
-}
-
-void Calculator::execCommand(string command) {
-
-}
-
-void Calculator::algebra(string algebraExp) {
-
-}
 
