@@ -1,0 +1,4 @@
+#ifndef MYEXCEPTION_H
+#define MYEXCEPTION_H
+
+#endif // MYEXCEPTION_H
