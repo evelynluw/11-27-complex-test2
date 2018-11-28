@@ -20,6 +20,7 @@ public:
     mixedNumber getRealPart() const;
     mixedNumber getImgPart() const;
     bool isReal() const;
+    mixedNumber dotProduct(const complexNumber& other);
 
 
     //mutators

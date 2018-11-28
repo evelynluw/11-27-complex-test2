@@ -19,7 +19,8 @@ HEADERS += \
     fraction.h \
     memories.h \
     mixednumber.h \
-    calculator.h
+    calculator.h \
+    myexception.h
 
 DISTFILES += \
     notes.md

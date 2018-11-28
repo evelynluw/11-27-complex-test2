@@ -1,9 +1,6 @@
 #include "calculator.h"
 #include <regex>
 
-void run(int argc, char *argv[]) {
-
-}
 
 void test() {
     cout <<"unformatted: "<< "F = 1 2/3 + 4i" <<endl;
@@ -14,8 +11,9 @@ void prompt() {
     cout<<"INPUT: ";
 }
 
-void help() {
-
+void help(string arg, memories &mem) {
+    cout<<"SAMPLE COMMANDS: \nLET F = 2 + 4i\nLOAD filename.complex\nSAVE filename.complex\n"
+        <<"PRINT F\nEXIT\nWEXIT\nF=G+H\nF=G-H\nF=G*H\nF=G/H\nF=G^H\nF=~G"<<endl;
 }
 
 string getCommand(istream& in) {
@@ -76,8 +74,14 @@ string formatString(string unformatted) {
 //    TESTED:
 ////    cout <<"unformatted: "<< "F = 1 2/3 + 4i" <<endl;
 ////    cout <<"formatted: "<<formatString("F = 2 2/3 + 4i")<<endl;
-    regex excessiveSpace("(?!\\s\\d+\\/)\\s");
+    regex excessiveSpace("((?!\\s\\d+\\/)\\s)");
     string formatted = regex_replace(unformatted, excessiveSpace, "");
+//    regex excessiveSpace2("=\\s");
+//    string formatted2 =C:\Users\Evelyn\Google Drive (ylu40@go.pasadena.edu)\CS 3A\9\11-27-complex-test2\build-complexCalculate-Desktop_Qt_5_11_2_MinGW_32bit-Debug\debug regex_replace(formatted, excessiveSpace, "=");
+    size_t pos;
+    if((pos=formatted.find('='))!=string::npos)
+        if(formatted[pos+1]==' ')
+            formatted.erase(pos+1,1);
     formatted = toUpper(formatted);
     return formatted;
 }
@@ -112,6 +116,10 @@ void let(string arg, memories &mem) {
     //arg="F=2 1/2+4i"
     char funcName = arg[0];
     arg.erase(0,2); //"2 1/2+4i"
+//    cout<<"##arg = "<<arg<<endl;
+    regex complexNum("^((\\d+\\s)?\\d+([\\/.]\\d+)?[+-]?)?(((\\d+\\s)?\\d+([\\/.]\\d+)?)?I?)$");
+    if(!regex_match(arg, complexNum))
+        throw e_wrong_input_format;
     mem[funcName]=arg;
     string funcNameStr;
     funcNameStr+=funcName;
@@ -128,8 +136,8 @@ void save(string arg, memories &mem) {
        return;
        //throw error
     }
-    if(filename.find(".exp")>filename.size())
-       filename+=".exp";
+    if(filename.find(".complex")>filename.size())
+       filename+=".complex";
     ifs.open(filename);
     if(!ifs.fail()) {
        cout<<"file already exists, overwrite?"<<endl;
@@ -154,7 +162,9 @@ void exit(string arg, memories &mem) {
 }
 
 void wexit(string arg, memories &mem) {
-
+    //arg = "filename.complex"
+    save(arg, mem);
+    exit(0);
 }
 
 void trig(string arg, memories &mem) {    //arg="F=2 1/2+4i"
@@ -164,15 +174,14 @@ void trig(string arg, memories &mem) {    //arg="F=2 1/2+4i"
     cout<<abs(_var)<<", "<<std::arg(_var)<<endl;
 }
 //
-
-void execute(string arg, memories &mem) {
-
+void ortho(string arg, memories &mem) {
+    //arg = "FG"
+    mixedNumber crossproduct = mem[arg[0]].dotProduct(mem[arg[1]]);
+    cout<<arg[0] << " and "<<arg[1];
+    if(crossproduct == mixedNumber(0))
+        cout<<" are orthogonal"<<endl;
+    else
+        cout<<" are not orthogonal"<<endl;
 }
-
-void record(string arg, memories &mem) {
-
-}
-
-//
 
 

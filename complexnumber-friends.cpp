@@ -25,7 +25,7 @@ std::ostream& operator << (std::ostream& out, const complexNumber& cplx) {
 std::istream& operator >> (std::istream& in, complexNumber& cplx) {
     mixedNumber x, y;
     char junk, sign = '+';
-    if(in.peek() == 'i') {
+    if(toupper(in.peek()) == 'I') {
         in>>junk;
         cplx.setValue(0,1);
         return in;
@@ -48,6 +48,10 @@ std::istream& operator >> (std::istream& in, complexNumber& cplx) {
     }
 //    while(in.peek()==' ')
 //        in.get();
+    if(toupper(in.peek())=='I'){
+        cplx.setValue(x,1);
+        return in;
+    }
     in>>y;
     std::stringstream ss;
     ss<<sign<<y;

@@ -36,6 +36,10 @@ bool complexNumber::isReal() const {
     return img == 0;
 }
 
+mixedNumber complexNumber::dotProduct(const complexNumber& other) {
+    return (real * other.getRealPart() + img * other.getImgPart());
+}
+
 //mutators
 void complexNumber::setValue(mixedNumber _real, mixedNumber _img) {
     real = _real;
@@ -86,7 +90,7 @@ complexNumber complexNumber::operator ~ () const { //TESTED
 //PRIVATE
 
 void complexNumber::copy(const complexNumber& other) {
-
+    setValue(other);
 }
 
 

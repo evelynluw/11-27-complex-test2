@@ -98,6 +98,8 @@ int fraction::getDenom() const//accessor function for denominator
 
 void fraction::setValue(int n, int d) //mutator function
 {
+    if(d == 0)
+        throw e_divide_by_zero;
     num = n;
     denom = d;
     reduce();

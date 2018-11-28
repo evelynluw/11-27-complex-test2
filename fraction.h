@@ -5,6 +5,7 @@
 #include <cmath>
 #include <sstream>
 #include <string>
+#include "myexception.h"
 
 class fraction
 {
